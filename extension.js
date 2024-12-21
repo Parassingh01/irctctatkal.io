@@ -247,8 +247,6 @@ function loadUserData() {
         console.log(e),
         0 !== Object.keys(e).length && (document.querySelector("#irctc-login").value = e.irctc_credentials.user_name,
         document.querySelector("#irctc-password").value = e.irctc_credentials.password,
-        document.querySelector("#subscriber-username").value = e.subs_credentials.user_name,
-        document.querySelector("#subscriber-password").value = e.subs_credentials.password,
         document.querySelector("#from-station-input").value = e.journey_details.from,
         document.querySelector("#destination-station-input").value = e.journey_details.destination,
         document.querySelector("#boarding-station-input").value = e.journey_details.boarding,
@@ -296,15 +294,6 @@ function getMsg(e, t) {
         sender: "popup",
         id: "irctc"
     }
-}
-function saveForm() {
-    if ("" == document.getElementById("subscriber-username").value || "" == document.getElementById("subscriber-password").value) {
-        alert("subscriber username and password required");
-        return
-    }
-    modifyUserData(),
-    chrome.storage.local.set(finalData),
-    alert("Data saved successfully")
 }
 function clearData() {
     !0 == confirm("Do you want to clear data?") && chrome.storage.local.clear()
